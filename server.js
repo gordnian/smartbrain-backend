@@ -9,12 +9,10 @@ const clarifaiapp = new Clarifai.App({
 });
 
 const db = knex({
-  client: "mssql",
+  client: "pg",
   connection: {
-    host: "DESKTOP-9HDID7I",
-    user: "smartbrainuser",
-    password: "123456",
-    database: "smart-brain",
+    host: process.env.DATABASE_URL,
+    ssl: true,
   },
 });
 

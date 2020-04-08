@@ -121,5 +121,5 @@ app.put("/image", (req, res) => {
 });
 
 app.listen(process.env.PORT || 3001, () =>
-  console.log(`server is listening on port ${process.env.PORT} now)
+  console.log(`server is listening on port ${process.env.PORT} now`)
 );

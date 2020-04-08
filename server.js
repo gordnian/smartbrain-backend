@@ -20,33 +20,12 @@ const db = knex({
 
 const app = express();
 
-const database = {
-  users: [
-    {
-      id: "123",
-      name: "keyvan",
-      email: "gordnian@gmail.com",
-      password: "cookies",
-      entries: 0,
-      joined: new Date("2020/04/06"),
-    },
-    {
-      id: "124",
-      name: "sally",
-      email: "sally@gmail.com",
-      password: "bananas",
-      entries: 0,
-      joined: new Date("2020/04/06"),
-    },
-  ],
-};
-
 app.use(cors());
 
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.json(database.users);
+  res.send("smart brain backend server is running !!");
 });
 
 app.post("/imageurl", (req, res) => {

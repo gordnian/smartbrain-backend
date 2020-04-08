@@ -141,4 +141,6 @@ app.put("/image", (req, res) => {
     .catch((err) => res.status(400).json("unable to get entries"));
 });
 
-app.listen(3001, () => console.log("server is listening on port 3001 now"));
+app.listen(process.env.PORT || 3001, () =>
+  console.log(`server is listening on port ${process.env.PORT} now)
+);

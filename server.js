@@ -2,6 +2,11 @@ const express = require("express");
 const bcrypt = require("bcrypt-nodejs");
 const cors = require("cors");
 const knex = require("knex");
+const clarifai = require("clarifai");
+
+const clarifaiapp = new Clarifai.App({
+  apiKey: "183940480003412b921bc16406b9d7ae",
+});
 
 const db = knex({
   client: "mssql",
@@ -42,6 +47,15 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
   res.json(database.users);
+});
+
+app.post("/imageurl", (req, res) => {
+  clarifaiapp.models
+    .predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => res.status(400).json("unable to work with API"));
 });
 
 app.post("/signin", (req, res) => {
